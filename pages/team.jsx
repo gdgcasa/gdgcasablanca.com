@@ -16,9 +16,8 @@ export default function Team({ members }) {
     </div>
   )
 }
-// https://gdgcasablanca-admin.vercel.app/api/members/published
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   const members = await fetch(
     'https://gdgcasablanca-admin.vercel.app/api/members/published',
   ).then((d) => d.json())

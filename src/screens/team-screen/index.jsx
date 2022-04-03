@@ -3,7 +3,6 @@ import { BaseSection } from '../../components/base-section'
 import { SectionHeading } from '../../components/section-heading'
 
 export default function TeamScreen({ members }) {
-  console.log({ members })
   return (
     <main>
       <BaseSection>

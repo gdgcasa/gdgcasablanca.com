@@ -5,6 +5,7 @@ import { BaseSection } from '../../components/base-section'
 import Events from './sections/events'
 import { PageFooter } from '../../components/page-footer'
 import { SectionHeading } from '../../components/section-heading'
+import PastEvents from './sections/past-events'
 
 const twLinks = [
   'GDGCasablanca',
@@ -15,12 +16,12 @@ const twLinks = [
   'WTMMena',
 ]
 
-export default function HomeScreen() {
+export default function HomeScreen({ events, pastEvents }) {
   return (
     <>
       <main className='text-slate-800'>
         <IntroSection />
-        <PlannedEvents />
+        <AllEvents events={events} pastEvents={pastEvents} />
         <Contacts />
       </main>
       <PageFooter />
@@ -45,14 +46,14 @@ function IntroSection() {
         <Link
           href='https://gdg.community.dev/gdg-casablanca/'
           external
-          className={getBtnClasses({ uppercase: true })}
+          btnStyles={{ uppercase: true }}
         >
           Join the community
         </Link>
         <Link
           href='https://www.meetup.com/GDGCasablanca/'
           external
-          className={getBtnClasses({ outline: true, uppercase: true })}
+          btnStyles={{ outline: true, uppercase: true }}
         >
           Meetup page
         </Link>
@@ -60,28 +61,37 @@ function IntroSection() {
     </BaseSection>
   )
 }
-function PlannedEvents() {
+function AllEvents({ events, pastEvents }) {
   return (
     <BaseSection id='events'>
       <SectionHeading>{['Planned ', 'Events', '.']}</SectionHeading>
-      <Events />
 
-      <p>
-        Join <span title='Meetup and GDG Community members'>+6000</span> members
-        of the community, and be the{' '}
-        <span className='text-glue-500'>first</span> to get future event
-        updates.
-      </p>
-      <Link
-        href='https://gdg.community.dev/gdg-casablanca/'
-        external
-        className={getBtnClasses()}
-      >
-        Join Now
-      </Link>
+      <Events events={events} pastEvents={pastEvents} />
+
+      <CallToJoin />
+
+      <PastEvents pastEvents={pastEvents} />
     </BaseSection>
   )
 }
+
+function CallToJoin() {
+  return (
+    <div className='flex w-full items-center justify-center gap-8 rounded bg-glue-100 px-4 py-6'>
+      <p>
+        Join <span title='Meetup and GDG Community members'>+6000</span> members
+        of the community,
+        <br />
+        and be the <span className='text-glue-500'>first</span> to get future
+        event updates.
+      </p>
+      <Link href='https://gdg.community.dev/gdg-casablanca/' external btnStyles>
+        Join Now
+      </Link>
+    </div>
+  )
+}
+
 function Contacts() {
   return (
     <BaseSection id='contact'>
