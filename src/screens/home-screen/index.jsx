@@ -1,10 +1,10 @@
 import { Fragment } from 'react'
-import { getBtnClasses } from '../../components/button'
-import Link from '../../components/link'
+
 import { BaseSection } from '../../components/base-section'
-import Events from './sections/events'
+import Link from '../../components/link'
 import { PageFooter } from '../../components/page-footer'
 import { SectionHeading } from '../../components/section-heading'
+import Events from './sections/events'
 import PastEvents from './sections/past-events'
 
 const twLinks = [
@@ -64,9 +64,9 @@ function IntroSection() {
 function AllEvents({ events, pastEvents }) {
   return (
     <BaseSection id='events'>
-      <SectionHeading>{['Planned ', 'Events', '.']}</SectionHeading>
+      <SectionHeading>{['Upcoming ', 'Events', '.']}</SectionHeading>
 
-      <Events events={events} pastEvents={pastEvents} />
+      <Events events={events} />
 
       <CallToJoin />
 

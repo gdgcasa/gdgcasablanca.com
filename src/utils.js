@@ -33,13 +33,13 @@ export function formatEvent(eventData) {
     id,
   } = eventData
 
-  console.log({ eventData })
-
   const date = formatDate(localDate)
 
   const entries = []
   if (venue) {
-    if (venue.name) {
+    if (venue?.is_online_event) {
+      entries.push(venue.name)
+    } else if (venue.name) {
       entries.push(venue.name)
     }
     if (venue.city) {

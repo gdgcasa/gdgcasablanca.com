@@ -16,16 +16,20 @@ export default function Home({ events, pastEvents }) {
 }
 
 const MEETUP_ENDPOINT =
-  'https://api.meetup.com/gdgcasablanca/events?&photo-host=public&page=20'
+  'https://api.meetup.com/gdgcasablanca/events?&photo-host=public&page=5'
 const PAST_MEETUP_ENDPOINT =
-  'https://api.meetup.com/gdgcasablanca/events?&photo-host=public&page=3&status=past'
+  'https://api.meetup.com/gdgcasablanca/events?&photo-host=public&status=past'
+
+function getLatestEvents(events, nb = 3) {
+  return events.sort((a, b) => b.time - a.time).slice(0, nb)
+}
 
 export async function getStaticProps() {
   const eventsData = await fetch(MEETUP_ENDPOINT).then((d) => d.json())
   const pastEventsData = await fetch(PAST_MEETUP_ENDPOINT).then((d) => d.json())
 
   const events = eventsData.map(formatEvent)
-  const pastEvents = pastEventsData.map(formatEvent)
+  const pastEvents = getLatestEvents(pastEventsData).map(formatEvent)
 
   return {
     props: { events, pastEvents },

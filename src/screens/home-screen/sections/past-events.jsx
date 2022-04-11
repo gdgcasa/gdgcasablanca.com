@@ -1,3 +1,4 @@
+import Link from '../../../components/link'
 import PastEvent from './cards/past-event'
 
 export default function PastEvents({ pastEvents }) {
@@ -9,6 +10,14 @@ export default function PastEvents({ pastEvents }) {
           return <PastEvent {...event} key={event.id} />
         })}
       </div>
+
+      <Link
+        href='https://www.meetup.com/GDGCasablanca/events/past/'
+        external
+        className='self-start'
+      >
+        See All Past Events
+      </Link>
     </div>
   )
 }

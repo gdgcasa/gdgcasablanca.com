@@ -1,19 +1,30 @@
 import React from 'react'
 
+import Link from '../../../components/link'
 import Event from './cards/event'
 import NoResult from './cards/no-result'
 
-export default function Events({ events, pastEvents }) {
+export default function Events({ events }) {
   if (!events || events.length <= 0) {
     return <NoResult />
   }
 
   return (
-    <EventsWrapper>
-      {pastEvents.map((event) => {
-        return <Event {...event} key={event.id} />
-      })}
-    </EventsWrapper>
+    <div className='flex w-full flex-col gap-4'>
+      <EventsWrapper>
+        {events.map((event) => {
+          return <Event {...event} key={event.id} />
+        })}
+      </EventsWrapper>
+
+      <Link
+        href='https://www.meetup.com/GDGCasablanca/events/'
+        external
+        className='self-start'
+      >
+        See All Upcoming Events
+      </Link>
+    </div>
   )
 }
 
