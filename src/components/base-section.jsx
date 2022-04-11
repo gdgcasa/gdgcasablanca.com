@@ -28,7 +28,7 @@ export function BaseSection({
     >
       <div
         className={cx(
-          'mx-auto w-full max-w-5xl px-4 py-24 md:px-0',
+          'mx-auto w-full max-w-5xl px-4 py-24 lg:px-0',
           { 'flex flex-col items-start gap-6': !noLayout },
           containerClassName,
         )}

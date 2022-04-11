@@ -16,17 +16,17 @@ export default function PastEvent({
   ].filter(Boolean)
 
   return (
-    <div className='flex items-center gap-4 py-3'>
-      <div>
+    <div className='flex flex-col justify-between gap-4 py-3 sm:flex-row sm:items-center'>
+      <div className='flex flex-col gap-2'>
         <h3 className=''>{title}</h3>
 
-        <ul className='flex gap-2 text-slate-600'>
+        <ul className='flex flex-col text-slate-600 sm:flex-row md:gap-2'>
           {infoItems.map((data, index) => {
             return <InfoItem {...data} key={index} />
           })}
         </ul>
       </div>
-      <Link href={eventLink} external className='ml-auto'>
+      <Link href={eventLink} external className='self-start sm:self-auto'>
         Check Event Page
       </Link>
     </div>

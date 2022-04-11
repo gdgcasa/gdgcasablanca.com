@@ -77,13 +77,12 @@ function AllEvents({ events, pastEvents }) {
 
 function CallToJoin() {
   return (
-    <div className='flex w-full items-center justify-center gap-8 rounded bg-glue-100 px-4 py-6'>
-      <p>
+    <div className='flex w-full flex-col items-center justify-center gap-8 rounded bg-glue-100 px-4 py-6 md:flex-row'>
+      <p className='max-w-xs text-center md:text-left'>
         Join <span title='Meetup and GDG Community members'>+6000</span> members
-        of the community,
-        <br />
-        and be the <span className='text-glue-500'>first</span> to get future
-        event updates.
+        of the community, and be the{' '}
+        <span className='text-glue-500'>first</span> to get future event
+        updates.
       </p>
       <Link href='https://gdg.community.dev/gdg-casablanca/' external btnStyles>
         Join Now

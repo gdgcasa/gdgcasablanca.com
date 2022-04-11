@@ -40,7 +40,7 @@ export default function Header() {
       style={{ height: 'var(--header-height)' }}
     >
       <div
-        className='relative mx-auto flex max-w-5xl flex-grow flex-wrap items-center justify-between gap-4 py-4 px-3 md:py-1 md:px-0'
+        className='relative mx-auto flex max-w-5xl flex-grow flex-wrap items-center justify-between gap-4 p-2 md:py-1 lg:px-0'
         style={{ '--hm': '0.75rem' }}
       >
         <h1 className='-ml-2.5 md:-ml-1.5'>
@@ -65,7 +65,7 @@ export default function Header() {
           ref={mobileMenuRef}
         >
           <button
-            className='absolute top-4 right-4 rounded-full border border-current p-1.5 text-slate-400 hover:bg-slate-50 hover:text-slate-500 focus-visible:bg-slate-100 focus-visible:outline-offset-4 focus-visible:outline-slate-100 active:bg-slate-200 md:hidden'
+            className='absolute top-2 right-2 rounded-full border border-current p-1.5 text-slate-400 hover:bg-slate-50 hover:text-slate-500 focus-visible:bg-slate-100 focus-visible:outline-offset-4 focus-visible:outline-slate-100 active:bg-slate-200 md:hidden'
             onClick={toggleMobileMenu}
           >
             <X className='h-5 w-5' />
