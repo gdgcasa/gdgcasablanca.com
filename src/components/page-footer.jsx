@@ -42,7 +42,14 @@ export function PageFooter() {
           height={22}
         />
         <div className='text-center text-sm text-gray-500 md:text-right'>
-          With ❤️ by the GDG Casablanca Team | Code Hosted on Github
+          With ❤️ &nbsp; by the GDG Casablanca Team | Code Hosted on{' '}
+          <a
+            href='https://github.com/gdgcasa/gdgcasablanca.com'
+            target='_blank'
+            rel='noreferrer'
+          >
+            Github
+          </a>
         </div>
       </div>
     </BaseSection>
