@@ -18,12 +18,8 @@ export default function Team({ members }) {
 }
 
 export async function getStaticProps() {
-  const members = await fetch(
-    'https://gdgcasablanca-admin.vercel.app/api/members/published',
-  ).then((d) => d.json())
+  const url = `${process.env.NEXT_PUBLIC_BE_BASE}/members/published`
+  const members = await fetch(url).then((d) => d.json())
 
-  return {
-    props: { members },
-    revalidate: 10,
-  }
+  return { props: { members }, revalidate: 10 }
 }

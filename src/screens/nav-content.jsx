@@ -12,14 +12,21 @@ const navLinks = [
 export default function NavContent() {
   return (
     <>
-      <nav className='flex flex-col gap-y-1 gap-x-4 self-stretch md:flex-row md:items-center'>
-        {navLinks.map(({ label, href }) => {
-          return (
-            <NavLink href={href} key={href}>
-              {label}
-            </NavLink>
-          )
-        })}
+      <nav>
+        <ul
+          className='flex flex-col gap-y-1 gap-x-4 self-stretch md:flex-row md:items-center'
+          role='menubar'
+        >
+          {navLinks.map(({ label, href }) => {
+            return (
+              <li key={href} role='none'>
+                <NavLink role='menuitem' href={href}>
+                  {label}
+                </NavLink>
+              </li>
+            )
+          })}
+        </ul>
       </nav>
       <a
         href='https://wtm.gdgcasablanca.com/'

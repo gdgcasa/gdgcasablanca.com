@@ -43,16 +43,14 @@ export default function Header() {
         className='relative mx-auto flex max-w-5xl flex-grow flex-wrap items-center justify-between gap-4 p-2 md:py-1 lg:px-0'
         style={{ '--hm': '0.75rem' }}
       >
-        <h1 className='-ml-2.5 md:-ml-1.5'>
-          <NavLink href='/' className='inline-flex'>
-            <Image
-              src='/logo-gdg.svg'
-              alt='GDG Casablanca'
-              width={192}
-              height={22}
-            />
-          </NavLink>
-        </h1>
+        <NavLink href='/' className='-ml-2.5 inline-flex md:-ml-1.5'>
+          <Image
+            src='/logo-gdg.svg'
+            alt='GDG Casablanca'
+            width={192}
+            height={22}
+          />
+        </NavLink>
         <section className='hidden flex-grow flex-col items-start justify-between rounded-lg md:flex md:flex-row md:items-center'>
           <NavContent />
         </section>
