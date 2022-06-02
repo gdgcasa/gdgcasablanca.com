@@ -34,7 +34,7 @@ export default function AllEvents({ eventData }) {
   )
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps() {
   const base = process.env.NEXT_PUBLIC_BE_BASE
 
   const url = `${base}/events`
@@ -44,5 +44,6 @@ export async function getStaticProps({ params }) {
 
   return {
     props: { eventData },
+    revalidate: 60,
   }
 }
