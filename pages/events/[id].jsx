@@ -5,7 +5,7 @@ import Header from '../../src/components/header'
 import { PageFooter } from '../../src/components/page-footer'
 import SingleEventScreen from '../../src/screens/signle-event'
 
-export default function SingleEvent({ members }) {
+export default function SingleEvent({ event }) {
   const { query } = useRouter()
   const { id } = query
 
@@ -15,30 +15,37 @@ export default function SingleEvent({ members }) {
 
       <Header />
 
-      <SingleEventScreen id={id} members={members} />
+      <SingleEventScreen id={id} event={event} />
 
       <PageFooter />
     </div>
   )
 }
 
-export async function getStaticProps() {
-  const members = await fetch(
-    'https://gdgcasablanca-admin.vercel.app/api/members/published',
-  ).then((d) => d.json())
+const base = process.env.NEXT_PUBLIC_BE_BASE
+
+export async function getStaticProps({ params }) {
+  const { id } = params
+
+  const url = `${base}/event/${id}`
+  const event = await fetch(url, {
+    headers: { generating: process.env.SECRECT_GEN_KEY },
+  }).then((d) => d.json())
 
   return {
-    props: { id: '1', members },
+    props: { id, event },
   }
 }
 
 export async function getStaticPaths() {
-  return {
-    paths: [
-      { params: { id: '1' } },
-      { params: { id: '2' } },
-      { params: { id: '3' } },
-    ],
-    fallback: false,
-  }
+  const url = `${base}/events`
+  const {
+    data: { dbEvents },
+  } = await fetch(url, {
+    headers: { generating: process.env.SECRECT_GEN_KEY },
+  }).then((d) => d.json())
+
+  const paths = dbEvents.map((event) => ({ params: { id: event.id } }))
+
+  return { paths: paths, fallback: false }
 }
