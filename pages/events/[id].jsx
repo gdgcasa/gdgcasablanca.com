@@ -48,5 +48,5 @@ export async function getStaticPaths() {
 
   const paths = dbEvents.map((event) => ({ params: { id: event.id } }))
 
-  return { paths: paths, fallback: false, revalidate: 60 }
+  return { paths: paths, fallback: 'blocking' }
 }
