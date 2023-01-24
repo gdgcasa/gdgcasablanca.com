@@ -31,6 +31,7 @@ export function formatEvent(eventData) {
     local_time: timeFrom,
     venue,
     id,
+    is_online_event: isOnlineEvent,
   } = eventData
 
   const date = formatDate(localDate)
@@ -47,7 +48,11 @@ export function formatEvent(eventData) {
     }
   }
 
-  const location = venue ? entries.join(', ') : 'Soon ...'
+  const location = venue
+    ? entries.join(', ')
+    : isOnlineEvent
+    ? 'Online'
+    : 'Soon ...'
 
   const event = {
     id,
